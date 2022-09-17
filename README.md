@@ -1,4 +1,4 @@
-# product-category-prediction
+# product-category-prediction-inference
 
 ## How to launch local on your own machine
 
