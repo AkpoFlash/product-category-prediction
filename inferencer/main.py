@@ -7,8 +7,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from fastai.vision.core import PILImage
 
+
 class ClissifyImagePostBodyData(BaseModel):
     image: Union[str, None] = None
+
 
 app = FastAPI()
 
@@ -19,6 +21,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 @app.post("/classify-image")
 async def classify_image(item: ClissifyImagePostBodyData):

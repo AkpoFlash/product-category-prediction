@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  inferencer:
+    build: "./inferencer"
+    ports:
+      - "3000:3000"
+    volumes:
+      - "model:/app/model"
+
+  learner:
+    build: "./learner"
+    ports:
+      - "3001:3001"
+    shm_size: "32gb"
+    volumes:
+      - "model:/app/model"
+
+volumes:
+  model:

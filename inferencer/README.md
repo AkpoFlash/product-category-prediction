@@ -1,8 +1,8 @@
-# product-category-prediction-inference
+# inferencer
 
 ## How to launch local on your own machine
 
-Start web server on [localhost:8000](http://127.0.0.1:8000)
+Start web server on [localhost:3000](http://127.0.0.1:3000)
 ```bash
     uvicorn main:app --reload
 ```
@@ -18,7 +18,7 @@ docker build .
 
 Run container locally
 ```
-docker run -d -p 80:80 <IMAGE_ID>
+docker run -d -p 3000:3000 <IMAGE_ID>
 ```
 
 #
