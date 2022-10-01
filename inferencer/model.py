@@ -1,3 +1,4 @@
+import timm
 from fastai.vision.all import *
 
 inferencer = load_learner("model/product-categories.pkl")

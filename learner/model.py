@@ -1,4 +1,5 @@
 import os
+import timm
 from fastai.vision.widgets import *
 from fastai.vision.all import *
 from duckduckgo_search import ddg_images
@@ -13,7 +14,7 @@ def download_image_set():
     for category in product_categories:
         dest = os.path.join(path, category)
         os.makedirs(dest, exist_ok=True)
-        results = ddg_images(category, safesearch="Off", max_results=100)
+        results = ddg_images(category, safesearch="Off", max_results=300)
         imageUrls = []
         for result in results:
             imageUrls.append(result["image"])
@@ -45,9 +46,10 @@ def export_model():
 
         dls = categories.dataloaders(path)
 
-        learn = vision_learner(dls, resnet34, metrics=error_rate)
+        learn = vision_learner(
+            dls, 'convnext_base_in22ft1k', metrics=error_rate)
 
-        learn.fine_tune(8)
+        learn.fine_tune(4)
 
         learn.export(fname="model/product-categories.pkl")
     except Exception as e:
